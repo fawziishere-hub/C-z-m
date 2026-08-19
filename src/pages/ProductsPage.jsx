@@ -18,14 +18,78 @@ const itemVariants = {
 
 // Mock Data for IT Wholesale Products
 const mockProducts = [
-  { id: 1, name: "Enterprise Server Pro Gen11", brand: "HPE", category: "Sunucu", desc: "2U Rack Server, 2x Intel Xeon Scalable, 128GB RAM, 8x SFF", icon: <Server size={40} /> },
-  { id: 2, name: "CloudSwitch 9000 Series", brand: "Cisco", category: "Ağ & Güvenlik", desc: "48-Port 10G/25G SFP28, 4x 100G QSFP28 Uplink Switch", icon: <Cpu size={40} /> },
-  { id: 3, name: "Business EliteBook 15", brand: "HP", category: "Bilgisayar", desc: "Intel Core i7 13. Nesil, 16GB RAM, 512GB NVMe SSD, 15.6'' FHD", icon: <Cpu size={40} /> },
-  { id: 4, name: "All-Flash Storage Array", brand: "Dell", category: "Depolama", desc: "24x NVMe SSD yuvası, Çift Kontrolcü, 100GbE Bağlantı", icon: <HardDrive size={40} /> },
-  { id: 5, name: "Next-Gen Firewall Gate", brand: "Fortinet", category: "Ağ & Güvenlik", desc: "Kurumsal Güvenlik Duvarı, 10 Gbps IPS Throughput", icon: <Shield size={40} /> },
-  { id: 6, name: "ThinkCentre M-Series", brand: "Lenovo", category: "Bilgisayar", desc: "Kurumsal Masaüstü, Intel Core i5, 8GB RAM, 256GB SSD", icon: <Cpu size={40} /> },
-  { id: 7, name: "Blade Server System", brand: "Dell", category: "Sunucu", desc: "Yüksek yoğunluklu blade sunucu şasisi, 8x modül desteği", icon: <Server size={40} /> },
-  { id: 8, name: "Wireless Access Point", brand: "Aruba", category: "Ağ & Güvenlik", desc: "Wi-Fi 6E (802.11ax), 4x4 MU-MIMO, İç Mekan AP", icon: <Cpu size={40} /> },
+  { 
+    id: 1, 
+    name: "Kurumsal Sunucu Pro Gen11", 
+    brand: "HPE", 
+    category: "Sunucu", 
+    desc: "2U Kabin Tipi Sunucu, 2x Intel Xeon Scalable, 128GB RAM, 8x SFF", 
+    icon: <Server size={40} />,
+    image: "/images/HPE-Proliant-DL380-Gen11-Server.png"
+  },
+  { 
+    id: 2, 
+    name: "Bulut Ağ Anahtarı 9000 Serisi", 
+    brand: "Cisco", 
+    category: "Ağ & Güvenlik", 
+    desc: "48 Port 10G/25G SFP28, 4x 100G QSFP28 Uplink Ağ Anahtarı", 
+    icon: <Cpu size={40} />,
+    image: "/images/images (2).jpg"
+  },
+  { 
+    id: 3, 
+    name: "Kurumsal EliteBook 15", 
+    brand: "HP", 
+    category: "Bilgisayar", 
+    desc: "Intel Core i7 13. Nesil, 16GB RAM, 512GB NVMe SSD, 15.6'' FHD", 
+    icon: <Cpu size={40} />,
+    image: "/images/hp-850-g8-358p5ea-i5-1135g7-8gb-256gb-15-6-w10p-47169.webp"
+  },
+  { 
+    id: 4, 
+    name: "All-Flash Depolama Ünitesi", 
+    brand: "Dell", 
+    category: "Depolama", 
+    desc: "24x NVMe SSD yuvası, Çift Kontrolcü, 100GbE Bağlantı", 
+    icon: <HardDrive size={40} />,
+    image: "/images/images (3).jpg"
+  },
+  { 
+    id: 5, 
+    name: "Yeni Nesil Güvenlik Duvarı Geçidi", 
+    brand: "Fortinet", 
+    category: "Ağ & Güvenlik", 
+    desc: "Kurumsal Güvenlik Duvarı, 10 Gbps IPS Verim Hızı", 
+    icon: <Shield size={40} />,
+    image: "/images/images (4).jpg"
+  },
+  { 
+    id: 6, 
+    name: "ThinkCentre M-Serisi", 
+    brand: "Lenovo", 
+    category: "Bilgisayar", 
+    desc: "Kurumsal Masaüstü, Intel Core i5, 8GB RAM, 256GB SSD", 
+    icon: <Cpu size={40} />,
+    image: "/images/images (5).jpg"
+  },
+  { 
+    id: 7, 
+    name: "Blade Sunucu Sistemi", 
+    brand: "Dell", 
+    category: "Sunucu", 
+    desc: "Yüksek Yoğunluklu Blade Sunucu Şasisi, 8x Modül Desteği", 
+    icon: <Server size={40} />,
+    image: "/images/images (6).jpg"
+  },
+  { 
+    id: 8, 
+    name: "Kablosuz Erişim Noktası", 
+    brand: "Aruba", 
+    category: "Ağ & Güvenlik", 
+    desc: "Wi-Fi 6E (802.11ax), 4x4 MU-MIMO, İç Mekan Erişim Noktası", 
+    icon: <Cpu size={40} />,
+    image: "/images/images (7).jpg"
+  },
 ];
 
 const categories = ["Tüm Ürünler", "Sunucu", "Ağ & Güvenlik", "Bilgisayar", "Depolama"];
@@ -149,9 +213,19 @@ export default function ProductsPage() {
                   variants={itemVariants}
                   className="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col transition-transform hover:-translate-y-1"
                 >
-                  <div className="h-48 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 border-b border-slate-200 dark:border-slate-800">
-                    {product.icon}
+                  {/* THIS IS THE FIXED IMAGE CONTAINER */}
+                  <div className="h-48 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 border-b border-slate-200 dark:border-slate-800 overflow-hidden relative">
+                    {product.image ? (
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      product.icon
+                    )}
                   </div>
+                  
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-4">
                       <span className="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-600/10 px-3 py-1 rounded-full">
