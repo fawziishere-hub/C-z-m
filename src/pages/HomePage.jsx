@@ -43,12 +43,12 @@ const HomePage = ({ onNavigate }) => {
     <div className="max-w-[100vw] overflow-x-hidden bg-gray-50 dark:bg-gray-900">
       
       {/* Hero Section */}
-      <section className="relative bg-slate-900 py-32 dark:bg-slate-950 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-blue-50 via-white to-white py-32 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
-          <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute inset-0 opacity-50 dark:opacity-10">
+          <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-300 dark:bg-blue-500 rounded-full mix-blend-normal dark:mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
+          <div className="absolute top-0 -right-4 w-72 h-72 bg-indigo-300 dark:bg-purple-500 rounded-full mix-blend-normal dark:mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-sky-300 dark:bg-indigo-500 rounded-full mix-blend-normal dark:mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
@@ -57,28 +57,28 @@ const HomePage = ({ onNavigate }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className="mb-6 inline-block rounded-full bg-slate-800 border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-300">
+            <span className="mb-6 inline-block rounded-full bg-white dark:bg-slate-800 border border-blue-200 dark:border-slate-700 px-4 py-2 text-sm font-semibold text-blue-700 dark:text-slate-300 shadow-sm">
              30+ Yıllık Sektör Tecrübesi
             </span>
-            <h1 className="mb-6 text-5xl md:text-6xl font-extrabold text-white tracking-tight">
+            <h1 className="mb-6 text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Bilişim Sektörünün <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-300">
                 Güvenilir Lideri
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-xl text-slate-300 mb-10 leading-relaxed">
+            <p className="mx-auto max-w-2xl text-xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed">
               1992'den bugüne kamu ve özel sektöre yenilikçi bilgi teknolojileri, toptan donanım dağıtımı ve kurumsal çözümler sunuyoruz.
             </p>
             <div className="flex justify-center gap-4">
               <button 
                 onClick={() => onNavigate("about")}
-                className="rounded-lg bg-white text-slate-900 px-8 py-4 font-bold transition-all hover:bg-gray-100 shadow-lg"
+                className="rounded-lg bg-blue-600 text-white px-8 py-4 font-bold transition-all hover:bg-blue-700 shadow-lg shadow-blue-600/25"
               >
                 Hakkımızda
               </button>
               <button 
                 onClick={() => onNavigate("contact")}
-                className="rounded-lg bg-transparent border border-slate-500 text-white px-8 py-4 font-bold transition-all hover:bg-slate-800"
+                className="rounded-lg bg-white border border-slate-300 text-slate-700 px-8 py-4 font-bold transition-all hover:bg-slate-50 hover:border-slate-400 dark:bg-transparent dark:border-slate-500 dark:text-white dark:hover:bg-slate-800"
               >
                 Bize Ulaşın
               </button>
