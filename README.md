@@ -1,4 +1,4 @@
-# [Client/Company Name] - Corporate Web Portal
+# ÇÖZÜM YAZILIM DONANIM ELEKTRONİ - Corporate Web Portal
 
 ## Overview
 This is a custom, full-stack web application developed for [Company Name]. The platform is designed to handle client interactions, secure user authentication, and dynamic service quotes. The frontend is built as a single-page application (SPA) for maximum performance, communicating via RESTful APIs to a robust backend architecture.
