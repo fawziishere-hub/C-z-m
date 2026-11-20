@@ -20,6 +20,7 @@ import DashboardPage from "./pages/Dashboard";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminGate from "./components/AdminGate";
 
 const queryClient = new QueryClient();
 
@@ -55,9 +56,23 @@ function AppContent() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/contact" element={<ContactPage />} />
 
-          {/* Admin panel — deliberately unprotected, opens straight to the dashboard. */}
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/*" element={<AdminDashboard />} />
+          {/* Admin panel — Supabase ile korunuyor, sadece ADMIN_EMAIL girebilir. */}
+          <Route
+            path="/admin"
+            element={
+              <AdminGate>
+                <AdminDashboard />
+              </AdminGate>
+            }
+          />
+          <Route
+            path="/admin/*"
+            element={
+              <AdminGate>
+                <AdminDashboard />
+              </AdminGate>
+            }
+          />
         </Routes>
       </main>
 

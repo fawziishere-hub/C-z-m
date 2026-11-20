@@ -13,6 +13,7 @@ import {
   MessageSquare,
   ArrowLeft,
   RefreshCw,
+  LogOut,
 } from "lucide-react";
 import { supabase } from "../supabaseClient";
 import { toast } from "react-toastify";
@@ -156,6 +157,11 @@ const AdminDashboard = () => {
     toast.success("CSV dosyası indirildi.");
   };
 
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    toast.success("Çıkış yapıldı.");
+  };
+
   const filteredQuotes = quotes.filter((quote) => {
     if (statusFilter !== "all" && statusOf(quote) !== statusFilter) return false;
 
@@ -206,6 +212,13 @@ const AdminDashboard = () => {
           >
             <ArrowLeft size={20} /> Siteye Dön
           </Link>
+
+          <button
+            onClick={handleSignOut}
+            className="w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-red-400 rounded-xl font-semibold transition-all"
+          >
+            <LogOut size={20} /> Çıkış Yap
+          </button>
         </nav>
 
         <div className="p-6 text-center text-white/40 text-xs">
