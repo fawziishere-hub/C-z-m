@@ -20,6 +20,7 @@ import ContactPage from "./pages/ContactPage";
 import DashboardPage from "./pages/Dashboard";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -44,7 +45,12 @@ function AppContent() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      {/* The admin panel is a standalone tool: no auth gate, no public chrome. */}
+      <Routes>
+        <Route path="/admin/*" element={null} />
+        <Route path="*" element={<Navbar />} />
+      </Routes>
+
       <main>
         <Routes>
           <Route
@@ -64,9 +70,17 @@ function AppContent() {
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/contact" element={<ContactPage />} />
+
+          {/* Admin panel — deliberately unprotected, opens straight to the dashboard. */}
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/*" element={<AdminDashboard />} />
         </Routes>
       </main>
-      <Footer />
+
+      <Routes>
+        <Route path="/admin/*" element={null} />
+        <Route path="*" element={<Footer />} />
+      </Routes>
       <ToastContainer
         position="bottom-right"
         autoClose={3000}
