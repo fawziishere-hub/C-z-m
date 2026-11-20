@@ -108,6 +108,54 @@ const AdminDashboard = () => {
   const handleComplete = (id) =>
     updateStatus(id, "contacted", "Talep tamamlandı olarak işaretlendi!");
 
+  const exportToCsv = () => {
+    if (filteredQuotes.length === 0) {
+      toast.info("Dışa aktarılacak kayıt yok.");
+      return;
+    }
+
+    const headers = [
+      "Firma",
+      "Yetkili",
+      "E-posta",
+      "Telefon",
+      "Ürün Grubu",
+      "Talep",
+      "Tarih",
+      "Durum",
+    ];
+
+    const escapeCell = (value) => `"${String(value ?? "").replace(/"/g, '""')}"`;
+
+    const rows = filteredQuotes.map((quote) => [
+      quote.companyName,
+      quote.fullName,
+      quote.email,
+      quote.phone,
+      CATEGORY_LABELS[quote.category] || quote.category,
+      quote.message,
+      formatDate(quote.created_at),
+      STATUS_META[statusOf(quote)].label,
+    ]);
+
+    const csv = [headers, ...rows]
+      .map((row) => row.map(escapeCell).join(";"))
+      .join("\r\n");
+
+    // BOM: Excel'in ş, ğ, ı gibi Türkçe karakterleri doğru göstermesi için
+    const blob = new Blob(["﻿" + csv], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `teklif-talepleri-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+
+    toast.success("CSV dosyası indirildi.");
+  };
+
   const filteredQuotes = quotes.filter((quote) => {
     if (statusFilter !== "all" && statusOf(quote) !== statusFilter) return false;
 
@@ -191,6 +239,15 @@ const AdminDashboard = () => {
                 className="pl-10 pr-4 py-2.5 w-full lg:w-80 bg-white border border-slate-200 rounded-full focus:outline-none focus:border-sky-500 shadow-sm transition-all"
               />
             </div>
+
+            <button
+              onClick={exportToCsv}
+              disabled={loading}
+              title="Görünen kayıtları Excel/CSV olarak indir"
+              className="px-4 py-2.5 bg-white border border-slate-200 rounded-full text-slate-600 hover:text-sky-500 shadow-sm transition-colors disabled:opacity-50 text-sm font-bold whitespace-nowrap"
+            >
+              Excel'e Aktar
+            </button>
 
             <button
               onClick={fetchQuotes}

@@ -12,10 +12,10 @@ export const useForgotPassword = () => {
       return true;
     },
     onSuccess: () => {
-      toast.success("Password reset email sent successfully! Check your inbox.");
+      toast.success("Şifre sıfırlama e-postası gönderildi. Gelen kutunuzu kontrol edin.");
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to send reset email");
+      toast.error(error.message || "Sıfırlama e-postası gönderilemedi");
     },
   });
 
@@ -40,10 +40,10 @@ export const useResetPassword = () => {
       return true;
     },
     onSuccess: () => {
-      toast.success("Password reset successfully!");
+      toast.success("Şifreniz başarıyla sıfırlandı!");
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to reset password");
+      toast.error(error.message || "Şifre sıfırlanamadı");
     },
   });
 

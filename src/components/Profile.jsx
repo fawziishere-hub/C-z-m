@@ -49,11 +49,11 @@ export const Profile = ({ userId }) => {
     if (!file) return;
 
     if (!file.type.startsWith("image/")) {
-      toast.error("Please select a valid image");
+      toast.error("Lütfen geçerli bir görsel seçin");
       return;
     }
     if (file.size > 2 * 1024 * 1024) {
-      toast.error("Image size must be less than 2MB");
+      toast.error("Görsel boyutu 2MB'dan küçük olmalıdır");
       return;
     }
 

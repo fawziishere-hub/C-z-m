@@ -22,12 +22,12 @@ export const useRegister = () => {
       return authData;
     },
     onSuccess: () => {
-      toast.success("Account registered successfully.");
+      toast.success("Hesabınız başarıyla oluşturuldu.");
       window.location.reload();
       localStorage.removeItem("tracking_link_id");
     },
     onError: (error) => {
-      toast.error(error.message || "Invalid data entered.");
+      toast.error(error.message || "Geçersiz bilgi girdiniz.");
     },
   });
 

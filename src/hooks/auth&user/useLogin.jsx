@@ -33,11 +33,11 @@ export const useLogin = () => {
         JSON.stringify(Date.now() + 24 * 60 * 60 * 1000)
       );
       
-      toast.success("Logged in successfully");
+      toast.success("Giriş başarılı");
       navigate(-1, { replace: true });
     },
     onError: (error) => {
-      toast.error(error.message || "An error occurred, please try again");
+      toast.error(error.message || "Bir hata oluştu, lütfen tekrar deneyin");
     },
   });
 

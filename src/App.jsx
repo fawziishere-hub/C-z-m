@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,21 +25,9 @@ const queryClient = new QueryClient();
 
 function AppContent() {
   const navigate = useNavigate();
-  const [selectedCourseId, setSelectedCourseId] = useState(null);
 
   const handleNavigate = (page) => {
     navigate(`/${page === "home" ? "" : page}`);
-    setSelectedCourseId(null);
-  };
-
-  const handleCourseClick = (courseId) => {
-    setSelectedCourseId(courseId);
-    navigate("/course-detail/" + courseId);
-  };
-
-  const handleBackToCourses = () => {
-    navigate("/courses");
-    setSelectedCourseId(null);
   };
 
   return (
@@ -56,10 +43,7 @@ function AppContent() {
           <Route
             path="/"
             element={
-              <HomePage
-                onNavigate={handleNavigate}
-                onCourseClick={handleCourseClick}
-              />
+              <HomePage onNavigate={handleNavigate} />
             }
           />
           <Route path="/about" element={<AboutPage />} />

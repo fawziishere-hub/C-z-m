@@ -49,10 +49,10 @@ export const useUpdateProfile = () => {
           })
         );
       }
-      toast.success("Profile updated successfully");
+      toast.success("Profiliniz güncellendi");
     },
     onError: (error) => {
-      toast.error(error.message || "An error occurred, please try again");
+      toast.error(error.message || "Bir hata oluştu, lütfen tekrar deneyin");
     },
   });
 
