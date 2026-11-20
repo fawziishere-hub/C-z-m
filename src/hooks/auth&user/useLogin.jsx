@@ -34,6 +34,17 @@ export const useLogin = () => {
       );
       
       toast.success("Giriş başarılı");
+
+      // Yönetici hesabıyla giriş yapıldıysa doğrudan yönetim paneline git
+      const adminEmail = (
+        import.meta.env.VITE_ADMIN_EMAIL || "admin@gmail.com"
+      ).toLowerCase();
+
+      if (authData.user?.email?.toLowerCase() === adminEmail) {
+        navigate("/admin", { replace: true });
+        return;
+      }
+
       navigate(-1, { replace: true });
     },
     onError: (error) => {

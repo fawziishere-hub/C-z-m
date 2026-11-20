@@ -33,7 +33,8 @@ function AppContent() {
 
   return (
     <div className="min-h-screen">
-      {/* The admin panel is a standalone tool: no auth gate, no public chrome. */}
+      {/* Admin panel is a standalone tool: no Navbar, no Footer. Access is
+          gated by <AdminGate> on the /admin routes below. */}
       <Routes>
         <Route path="/admin/*" element={null} />
         <Route path="*" element={<Navbar />} />
